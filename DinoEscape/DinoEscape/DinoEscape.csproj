@@ -52,7 +52,14 @@
     <EmbeddedResource Include="Game.ico" />
     <EmbeddedResource Include="SplashScreen.wpk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\Menus\play_button.wpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Menus\play_button_pressed.wpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DinoEscapeProject\DinoEscapeProject.csproj">
       <Name>DinoEscapeProject</Name>

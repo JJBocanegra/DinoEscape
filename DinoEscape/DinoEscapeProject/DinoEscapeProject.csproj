@@ -46,9 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\BirdBehavior.cs" />
+    <Compile Include="Behaviors\RocketBehavior.cs" />
+    <Compile Include="EntitiesFactory.cs" />
+    <Compile Include="Entities\Bird.cs" />
     <Compile Include="Entities\Rocket.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="MyScene.cs" />
+    <Compile Include="Resources\Textures.cs" />
+    <Compile Include="Scenes\GameScene.cs" />
+    <Compile Include="Scenes\MenuScene.cs" />
+    <Compile Include="Scenes\PauseScene.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

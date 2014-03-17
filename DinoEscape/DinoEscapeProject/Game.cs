@@ -1,4 +1,5 @@
 #region Using Statements
+using DinoEscapeProject.Scenes;
 using System;
 using WaveEngine.Common;
 using WaveEngine.Common.Graphics;
@@ -14,11 +15,12 @@ namespace DinoEscapeProject
         {
             base.Initialize(application);
 
-            ScreenContext screenContext = new ScreenContext(new MyScene());
-            WaveServices.ScreenContextManager.To(screenContext);
+            WaveServices.ScreenContextManager.To(new ScreenContext(new MenuScene()));
 
-            ViewportManager vm = WaveServices.ViewportManager;
-            vm.Activate(480, 800, ViewportManager.StretchMode.UniformToFill);
+            WaveServices.ViewportManager.Activate(
+                480, 
+                800, 
+                ViewportManager.StretchMode.Uniform);
         }
     }
 }

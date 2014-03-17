@@ -9,20 +9,27 @@ using WaveEngine.Framework.Services;
 
 namespace DinoEscapeProject.Entities
 {
-    public class Rocket : BaseDecorator
+    public class Bird : BaseDecorator
     {
-        public Rocket()
+        private readonly int[] direction =
+        {
+            -20,
+            (int)WaveServices.ViewportManager.VirtualWidth + 20
+        };
+        public Bird()
         {
             this.entity = new Entity()
                 .AddComponent(new Transform2D()
                 {
-                    X = WaveServices.ViewportManager.VirtualWidth / 2,
-                    Y = WaveServices.ViewportManager.VirtualHeight - 250                  
+                    X = this.direction[WaveServices.Random.Next(0, 2)],
+                    Y = 50,
+                    XScale = 0.1f,
+                    YScale = 0.1f
                 })
-                .AddComponent(new Sprite("Content/Rocket/Rocket.wpk"))
+                .AddComponent(new Sprite("Content/Enemies/bird.wpk"))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new RectangleCollider())
-                .AddComponent(new RocketBehavior());
+                .AddComponent(new BirdBehavior());
         }
     }
 }

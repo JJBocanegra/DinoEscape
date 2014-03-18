@@ -6,30 +6,22 @@ using WaveEngine.Components.Graphics2D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics2D;
-using WaveEngine.Framework.Services;
 #endregion
 
 namespace DinoEscapeProject.Entities
 {
-    public class Rocket : BaseDecorator
+    class Aircraft : Enemy
     {
-        public static int speed;
-
-        public Rocket()
+        public Aircraft()
         {
-            speed = 100;
-
             this.entity = new Entity()
                 .AddComponent(new Transform2D(){
-                    X = WaveServices.ViewportManager.VirtualWidth / 2,
-                    XScale = 0.8f,
-                    YScale = 0.8f,
                     Origin = Vector2.Center
                 })
-                .AddComponent(new Sprite(Textures.ROCKET))
+                .AddComponent(new Sprite(Textures.AIRCRAFT))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new RectangleCollider())
-                .AddComponent(new RocketBehavior());
+                .AddComponent(new AircraftBehavior());
         }
     }
 }

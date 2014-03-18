@@ -18,8 +18,8 @@ namespace DinoEscapeProject
             WaveServices.ScreenContextManager.To(new ScreenContext(new MenuScene()));
 
             WaveServices.ViewportManager.Activate(
-                480, 
-                800, 
+                480,
+                800,
                 ViewportManager.StretchMode.Uniform);
         }
     }

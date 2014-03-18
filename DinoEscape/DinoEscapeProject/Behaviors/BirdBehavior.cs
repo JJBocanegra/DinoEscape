@@ -14,48 +14,54 @@ namespace DinoEscapeProject.Behaviors
     class BirdBehavior : Behavior
     {
         [RequiredComponent]
-        private Transform2D transform;
+        private Transform2D transform2D;
 
         private int speed;
-        private int offset;
+        private float offset;
         private string direction;
-        private int[] position;
+        private float[] position;
 
         protected override void Initialize()
         {
             base.Initialize();
 
-            speed = 100;
-            offset = (int)this.transform.Rectangle.Width / 2;
-            position = new int[] { -offset, (int)WaveServices.ViewportManager.VirtualWidth + offset };
-            this.transform.X = this.position[WaveServices.Random.Next(0, 2)];
+            speed               = 100;
+            offset              = (this.transform2D.Rectangle.Width / 2) * this.transform2D.XScale;
+            position            = new float[] { -offset, (int)WaveServices.ViewportManager.VirtualWidth + offset };
 
-            if (this.transform.X <= 0)
+            this.transform2D.X = this.position[WaveServices.Random.Next(0, 2)];
+
+            if (this.transform2D.X <= 0)
                 direction = "Right";
             else
             {
                 direction = "Left";
-                this.transform.Effect = SpriteEffects.FlipHorizontally;
+                this.transform2D.Effect = SpriteEffects.FlipHorizontally;
             }
         }
 
         protected override void Update(TimeSpan gameTime)
         {
-            Movement(gameTime);
+            Move(gameTime);
         }
 
-        private void Movement(TimeSpan gameTime)
+        private void Move(TimeSpan gameTime)
         {
-            Labels.Add("BirdX", this.transform.X.ToString());
-            Labels.Add("BirdY", this.transform.Y.ToString());
+            Labels.Add("BirdX", this.transform2D.X.ToString());
+            Labels.Add("BirdY", this.transform2D.Y.ToString());
 
-            if (this.transform.X < -offset - 10 || this.transform.X > WaveServices.ViewportManager.VirtualWidth + offset + 10)
+            float X = this.transform2D.X;
+
+            if (X < -offset 
+            || X > WaveServices.ViewportManager.VirtualWidth + offset)
                 this.EntityManager.Remove(this.Owner);
 
             if (direction == "Right")
-                this.transform.X += speed * (float)gameTime.TotalSeconds;
+                X += speed * (float)gameTime.TotalSeconds;
             else
-                this.transform.X -= speed * (float)gameTime.TotalSeconds;
+                X -= speed * (float)gameTime.TotalSeconds;
+
+            this.transform2D.X = X;
         }
     }
 }

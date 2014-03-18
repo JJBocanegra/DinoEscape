@@ -13,13 +13,10 @@ namespace DinoEscapeProject.Entities
 {
     public class Bird : Enemy
     {
-        
-
         public Bird()
         {
             this.entity = new Entity()
-                .AddComponent(new Transform2D()
-                {
+                .AddComponent(new Transform2D(){
                     XScale = 0.5f,
                     YScale = 0.5f,
                     Origin = Vector2.Center

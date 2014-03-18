@@ -25,7 +25,6 @@ namespace FlyingKiteProject.Behaviors
         private Input inputService;
         private KeyboardState beforeKeyboardState;
         private bool diagnostics;
-        private bool darkBackground;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DebugSceneBehavior" /> class.

@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Framework;
-using WaveEngine.Framework.Diagnostic;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 
 namespace DinoEscapeProject.Behaviors
 {
-    class DroneBehavior : Behavior
+    class AircraftBehavior : Behavior
     {
 
         [RequiredComponent]
@@ -20,13 +19,17 @@ namespace DinoEscapeProject.Behaviors
         private int speed;
         private float offset;
         private string direction;
-        
+        private float[] position;
+
         protected override void Initialize()
         {
             base.Initialize();
 
-            speed   = 300;
-            offset  = (this.transform2D.Rectangle.Width / 2) * this.transform2D.XScale;
+            speed       = 100;
+            offset      = (this.transform2D.Rectangle.Width / 2) * this.transform2D.XScale;
+            position    = new float[] { -offset, (int)WaveServices.ViewportManager.VirtualWidth + offset };
+
+            this.transform2D.X = this.position[WaveServices.Random.Next(0, 2)];
 
             if (this.transform2D.X <= offset)
                 direction = "Right";
@@ -46,22 +49,17 @@ namespace DinoEscapeProject.Behaviors
         {
             float X = this.transform2D.X;
 
+            if (X < -offset
+            || X > WaveServices.ViewportManager.VirtualWidth + offset)
+                this.EntityManager.Remove(this.Owner);
+
             if (direction == "Right")
-            {
-                if (X > WaveServices.ViewportManager.VirtualWidth - offset)
-                    direction = "Left";
-                else
-                    X += speed * (float)gameTime.TotalSeconds;
-            }
+                X += speed * (float)gameTime.TotalSeconds;
             else
-            {
-                if (X < offset)
-                    direction = "Right";
-                else
-                    X -= speed * (float)gameTime.TotalSeconds;
-            }
+                X -= speed * (float)gameTime.TotalSeconds;
 
             this.transform2D.X = X;
         }
     }
 }
+

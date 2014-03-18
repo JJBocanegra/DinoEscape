@@ -22,7 +22,7 @@ namespace DinoEscapeProject
 
             EntityManager.Add(EntitiesFactory.CreateRocket());
             //EntityManager.Add(EntitiesFactory.CreateEnemiesEmitter());
-            EntityManager.Add(EntitiesFactory.CreateBird().entity);
+            EntityManager.Add(EntitiesFactory.CreateDrone().entity);
 
 #if DEBUG
             //Labels.Add("Prueba", "valor");

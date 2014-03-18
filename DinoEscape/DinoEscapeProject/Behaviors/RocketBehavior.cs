@@ -14,41 +14,53 @@ namespace DinoEscapeProject.Behaviors
     class RocketBehavior : Behavior
     {
         [RequiredComponent]
-        private Transform2D transform;
+        private Transform2D transform2D;
 
         private int speed;
-        private int offset;
+        private float offset;
 
         protected override void Initialize()
         {
             base.Initialize();
 
-            speed = 500;
-            offset = (int)this.transform.Rectangle.Width / 2;
-            this.transform.Y = WaveServices.ViewportManager.VirtualHeight - this.transform.Rectangle.Height / 2;
+            speed   = 500;
+            offset  = (this.transform2D.Rectangle.Width / 2) * this.transform2D.XScale;
+
+            this.transform2D.Y = (float)(WaveServices.ViewportManager.VirtualHeight - (this.transform2D.Rectangle.Height * 0.75f) * this.transform2D.XScale);
         }
 
         protected override void Update(TimeSpan gameTime)
         {
-            Movement(gameTime);
+            Move(gameTime);
         }
 
-        private void Movement(TimeSpan gameTime)
+        private void Move(TimeSpan gameTime)
         {
+            float movement  = speed * (float)gameTime.TotalSeconds;
+            float X         = this.transform2D.X;
+
             if (WaveServices.Input.KeyboardState.IsConnected)
             {
                 if ((WaveServices.Input.KeyboardState.Left == WaveEngine.Common.Input.ButtonState.Pressed
                 || WaveServices.Input.KeyboardState.A == WaveEngine.Common.Input.ButtonState.Pressed)
-                && this.transform.X > offset)
+                && X > offset)
                 {
-                    this.transform.X -= speed * (float)gameTime.TotalSeconds;
+                    X -= movement;
                 }
                 else if ((WaveServices.Input.KeyboardState.Right == WaveEngine.Common.Input.ButtonState.Pressed
                 || WaveServices.Input.KeyboardState.D == WaveEngine.Common.Input.ButtonState.Pressed)
-                && this.transform.X < WaveServices.ViewportManager.VirtualWidth - offset)
+                && X <= WaveServices.ViewportManager.VirtualWidth - offset)
                 {
-                    this.transform.X += speed * (float)gameTime.TotalSeconds;
+                    X += movement;
                 }
+
+                //Evitamos que sobresalga por los bordes
+                if (X < offset)
+                    X = offset;
+                else if (X > WaveServices.ViewportManager.VirtualWidth - offset)
+                    X = WaveServices.ViewportManager.VirtualWidth - offset;
+
+                this.transform2D.X = X;
             }
         }
     }

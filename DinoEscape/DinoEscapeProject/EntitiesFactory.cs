@@ -18,5 +18,15 @@ namespace DinoEscapeProject
         {
             return new Bird();
         }
+
+        public static Enemy CreateDrone()
+        {
+            return new Drone();
+        }
+
+        public static Enemy CreateAircraft()
+        {
+            return new Aircraft();
+        }
     }
 }

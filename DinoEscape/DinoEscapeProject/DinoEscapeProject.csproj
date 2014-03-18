@@ -17,7 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PROFILE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -47,9 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\BirdBehavior.cs" />
+    <Compile Include="Behaviors\DebugSceneBehavior.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Behaviors\DroneBehavior.cs" />
+    <Compile Include="Behaviors\PlaneBehavior.cs" />
     <Compile Include="Behaviors\RocketBehavior.cs" />
+    <Compile Include="Behaviors\ScrollBehavior.cs" />
     <Compile Include="EntitiesFactory.cs" />
     <Compile Include="Entities\Bird.cs" />
+    <Compile Include="Entities\Drone.cs" />
+    <Compile Include="Entities\EnemiesEmitter.cs" />
+    <Compile Include="Entities\Enemy.cs" />
+    <Compile Include="Entities\Plane.cs" />
     <Compile Include="Entities\Rocket.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Resources\Textures.cs" />

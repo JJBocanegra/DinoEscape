@@ -1,5 +1,7 @@
 ﻿#region Using Statements
 using DinoEscapeProject.Behaviors;
+using DinoEscapeProject.Resources;
+using WaveEngine.Common.Math;
 using WaveEngine.Components.Graphics2D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
@@ -9,27 +11,24 @@ using WaveEngine.Framework.Services;
 
 namespace DinoEscapeProject.Entities
 {
-    public class Bird : BaseDecorator
+    public class Bird : Enemy
     {
-        private readonly int[] direction =
-        {
-            -20,
-            (int)WaveServices.ViewportManager.VirtualWidth + 20
-        };
+        
+
         public Bird()
         {
             this.entity = new Entity()
                 .AddComponent(new Transform2D()
                 {
-                    X = this.direction[WaveServices.Random.Next(0, 2)],
-                    Y = 50,
-                    XScale = 0.1f,
-                    YScale = 0.1f
+                    XScale = 0.5f,
+                    YScale = 0.5f,
+                    Origin = Vector2.Center
                 })
-                .AddComponent(new Sprite("Content/Enemies/bird.wpk"))
+                .AddComponent(new Sprite(Textures.BIRD))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new RectangleCollider())
-                .AddComponent(new BirdBehavior());
+                .AddComponent(new BirdBehavior())
+                .AddComponent(new ScrollBehavior());
         }
     }
 }

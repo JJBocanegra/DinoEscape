@@ -6,12 +6,22 @@
   <Assets>
     <Asset Path="Enemies\bird.png">
       <ExportProperties>
-        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Default" Platform="Windows" Generate="False" ZipCompress="False" ExportType="WaveEngine.Framework.Graphics.Texture2D" ExportVersion="1.0.0.0" />
+        <Export ScalingType="Percentage" ScaledPercentage="20" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Default" Platform="Windows" Generate="True" ZipCompress="False" />
+      </ExportProperties>
+    </Asset>
+    <Asset Path="Menus\play_button.png">
+      <ExportProperties>
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Default" Platform="Windows" Generate="True" ZipCompress="False" />
+      </ExportProperties>
+    </Asset>
+    <Asset Path="Menus\play_button_pressed.png">
+      <ExportProperties>
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Default" Platform="Windows" Generate="True" ZipCompress="False" />
       </ExportProperties>
     </Asset>
     <Asset Path="Rocket\rocket.png">
       <ExportProperties>
-        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Default" Platform="Windows" Generate="False" ZipCompress="False" ExportType="WaveEngine.Framework.Graphics.Texture2D" ExportVersion="1.0.0.0" />
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Default" Platform="Windows" Generate="True" ZipCompress="True" />
       </ExportProperties>
     </Asset>
   </Assets>

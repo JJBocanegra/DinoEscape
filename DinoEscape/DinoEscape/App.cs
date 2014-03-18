@@ -21,10 +21,10 @@ namespace DinoEscape
 
         public App()
         {
-            this.Width = 800;
-            this.Height = 600;
-            this.FullScreen = false;
-            this.WindowTitle = "DinoEscape";
+            this.Width =        (int)(480 * 0.8f);
+            this.Height =       (int)(800 * 0.8f);
+            this.FullScreen =   false;
+            this.WindowTitle =  "Dino Escape";
         }
 
         public override void Initialize()

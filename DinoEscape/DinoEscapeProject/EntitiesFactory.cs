@@ -9,7 +9,12 @@ namespace DinoEscapeProject
             return new Rocket();
         }
 
-        public static Bird CreateBird()
+        public static EnemiesEmitter CreateEnemiesEmitter()
+        {
+            return new EnemiesEmitter();
+        }
+
+        public static Enemy CreateBird()
         {
             return new Bird();
         }

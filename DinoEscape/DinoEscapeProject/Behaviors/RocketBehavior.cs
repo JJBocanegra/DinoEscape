@@ -16,6 +16,18 @@ namespace DinoEscapeProject.Behaviors
         [RequiredComponent]
         private Transform2D transform;
 
+        private int speed;
+        private int offset;
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            speed = 500;
+            offset = (int)this.transform.Rectangle.Width / 2;
+            this.transform.Y = WaveServices.ViewportManager.VirtualHeight - this.transform.Rectangle.Height / 2;
+        }
+
         protected override void Update(TimeSpan gameTime)
         {
             Movement(gameTime);
@@ -27,15 +39,15 @@ namespace DinoEscapeProject.Behaviors
             {
                 if ((WaveServices.Input.KeyboardState.Left == WaveEngine.Common.Input.ButtonState.Pressed
                 || WaveServices.Input.KeyboardState.A == WaveEngine.Common.Input.ButtonState.Pressed)
-                && this.transform.X > 0)
+                && this.transform.X > offset)
                 {
-                    this.transform.X -= 500 * (float)gameTime.TotalSeconds;
+                    this.transform.X -= speed * (float)gameTime.TotalSeconds;
                 }
                 else if ((WaveServices.Input.KeyboardState.Right == WaveEngine.Common.Input.ButtonState.Pressed
                 || WaveServices.Input.KeyboardState.D == WaveEngine.Common.Input.ButtonState.Pressed)
-                && this.transform.X < WaveServices.ViewportManager.VirtualWidth)
+                && this.transform.X < WaveServices.ViewportManager.VirtualWidth - offset)
                 {
-                    this.transform.X += 500 * (float)gameTime.TotalSeconds;
+                    this.transform.X += speed * (float)gameTime.TotalSeconds;
                 }
             }
         }

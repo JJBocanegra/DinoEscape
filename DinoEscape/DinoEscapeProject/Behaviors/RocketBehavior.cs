@@ -24,9 +24,9 @@ namespace DinoEscapeProject.Behaviors
             base.Initialize();
 
             speed   = 500;
-            offset  = (this.transform2D.Rectangle.Width / 2) * this.transform2D.XScale;
+            offset  = (transform2D.Rectangle.Width / 2) * transform2D.XScale;
 
-            this.transform2D.Y = (float)(WaveServices.ViewportManager.VirtualHeight - (this.transform2D.Rectangle.Height * 0.75f) * this.transform2D.XScale);
+            transform2D.Y = (float)(WaveServices.ViewportManager.VirtualHeight - (transform2D.Rectangle.Height * 0.75f) * transform2D.XScale);
         }
 
         protected override void Update(TimeSpan gameTime)
@@ -37,7 +37,7 @@ namespace DinoEscapeProject.Behaviors
         private void Move(TimeSpan gameTime)
         {
             float movement  = speed * (float)gameTime.TotalSeconds;
-            float X         = this.transform2D.X;
+            float X         = transform2D.X;
 
             if (WaveServices.Input.KeyboardState.IsConnected)
             {
@@ -60,7 +60,7 @@ namespace DinoEscapeProject.Behaviors
                 else if (X > WaveServices.ViewportManager.VirtualWidth - offset)
                     X = WaveServices.ViewportManager.VirtualWidth - offset;
 
-                this.transform2D.X = X;
+                transform2D.X = X;
             }
         }
     }

@@ -26,17 +26,17 @@ namespace DinoEscapeProject.Behaviors
             base.Initialize();
 
             speed               = 100;
-            offset              = (this.transform2D.Rectangle.Width / 2) * this.transform2D.XScale;
+            offset              = (transform2D.Rectangle.Width / 2) * transform2D.XScale;
             position            = new float[] { -offset, (int)WaveServices.ViewportManager.VirtualWidth + offset };
 
-            this.transform2D.X = this.position[WaveServices.Random.Next(0, 2)];
+            transform2D.X = this.position[WaveServices.Random.Next(0, 2)];
 
-            if (this.transform2D.X <= 0)
+            if (transform2D.X <= 0)
                 direction = "Right";
             else
             {
                 direction = "Left";
-                this.transform2D.Effect = SpriteEffects.FlipHorizontally;
+                transform2D.Effect = SpriteEffects.FlipHorizontally;
             }
         }
 
@@ -47,10 +47,10 @@ namespace DinoEscapeProject.Behaviors
 
         private void Move(TimeSpan gameTime)
         {
-            Labels.Add("BirdX", this.transform2D.X.ToString());
-            Labels.Add("BirdY", this.transform2D.Y.ToString());
+            Labels.Add("BirdX", transform2D.X.ToString());
+            Labels.Add("BirdY", transform2D.Y.ToString());
 
-            float X = this.transform2D.X;
+            float X = transform2D.X;
 
             if (X < -offset 
             || X > WaveServices.ViewportManager.VirtualWidth + offset)
@@ -61,7 +61,7 @@ namespace DinoEscapeProject.Behaviors
             else
                 X -= speed * (float)gameTime.TotalSeconds;
 
-            this.transform2D.X = X;
+            transform2D.X = X;
         }
     }
 }

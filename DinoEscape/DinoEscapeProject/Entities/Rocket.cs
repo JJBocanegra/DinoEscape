@@ -15,6 +15,9 @@ namespace DinoEscapeProject.Entities
     {
         public static int speed;
 
+        /// <summary>
+        /// Initialize a new instance of the Rocket class
+        /// </summary>
         public Rocket()
         {
             speed = 100;

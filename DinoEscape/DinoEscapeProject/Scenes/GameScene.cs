@@ -24,6 +24,8 @@ namespace DinoEscapeProject
             //EntityManager.Add(EntitiesFactory.CreateEnemiesEmitter());
             EntityManager.Add(EntitiesFactory.CreateDrone().entity);
 
+            this.AddSceneBehavior(new GameSceneBehavior(), SceneBehavior.Order.PreUpdate);
+
 #if DEBUG
             //Labels.Add("Prueba", "valor");
             this.AddSceneBehavior(new DebugSceneBehavior(), SceneBehavior.Order.PreUpdate);

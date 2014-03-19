@@ -52,6 +52,8 @@
     </Compile>
     <Compile Include="Behaviors\DroneBehavior.cs" />
     <Compile Include="Behaviors\AircraftBehavior.cs" />
+    <Compile Include="Behaviors\PauseSceneBehavior.cs" />
+    <Compile Include="Behaviors\GameSceneBehavior.cs" />
     <Compile Include="Behaviors\RocketBehavior.cs" />
     <Compile Include="Behaviors\ScrollBehavior.cs" />
     <Compile Include="EntitiesFactory.cs" />

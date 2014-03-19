@@ -10,7 +10,7 @@ using WaveEngine.Framework.Physics2D;
 
 namespace DinoEscapeProject.Entities
 {
-    class Aircraft : Enemy
+    public class Aircraft : Enemy
     {
         public Aircraft()
         {

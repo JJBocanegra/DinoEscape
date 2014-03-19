@@ -85,14 +85,7 @@ namespace DinoEscape
                 }
                 else
                 {
-                    if (WaveServices.Input.KeyboardState.Escape == ButtonState.Pressed)
-                    {
-                        WaveServices.Platform.Exit();
-                    }
-                    else
-                    {
-                        this.game.UpdateFrame(elapsedTime);
-                    }
+                    this.game.UpdateFrame(elapsedTime);
                 }
             }
         }

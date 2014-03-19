@@ -12,7 +12,7 @@ namespace DinoEscapeProject.Behaviors
     class ScrollBehavior : Behavior
     {
         [RequiredComponent]
-        private Transform2D transform;
+        private Transform2D transform2D;
 
         private int speed;
 
@@ -25,7 +25,7 @@ namespace DinoEscapeProject.Behaviors
 
         protected override void Update(TimeSpan gameTime)
         {
-            this.transform.Y += speed * (float)gameTime.TotalSeconds;
+            transform2D.Y += speed * (float)gameTime.TotalSeconds;
         }
     }
 }

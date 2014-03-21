@@ -21,8 +21,8 @@ namespace DinoEscape
 
         public App()
         {
-            this.Width =        (int)(480 * 0.8f);
-            this.Height =       (int)(800 * 0.8f);
+            this.Width =        (int)(480 * 1f);
+            this.Height =       (int)(800 * 1f);
             this.FullScreen =   false;
             this.WindowTitle =  "Dino Escape";
         }

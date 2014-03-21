@@ -1,6 +1,8 @@
 ﻿#region Using Statements
 using DinoEscapeProject.Resources;
+using System;
 using WaveEngine.Common.Graphics;
+using WaveEngine.Components.Transitions;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Managers;
@@ -26,7 +28,13 @@ namespace DinoEscapeProject.Scenes
             };
             startGameButton.Click += (o, e) =>
             {
-                WaveServices.ScreenContextManager.Push(new ScreenContext("GameScene", new GameScene()));
+                TimeSpan timeSpan = new TimeSpan(0, 0, 0, 1, 500);
+                CurtainsTransition transition = new CurtainsTransition(timeSpan);
+                ScreenContext gameContext = new ScreenContext("GameScene", new GameScene())
+                {
+                    Behavior = ScreenContextBehaviors.DrawInBackground //Hacemos que se renderize cuando esté apilado en background (Paused)
+                };
+                WaveServices.ScreenContextManager.Push(gameContext, transition);
             };
 
             EntityManager.Add(startGameButton);

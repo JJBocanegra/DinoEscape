@@ -15,17 +15,17 @@ namespace DinoEscapeProject.Entities
     {
         public Bird()
         {
-            this.entity = new Entity()
-                .AddComponent(new Transform2D(){
+            this.entity
+                .AddComponent(new Transform2D()
+                {
+                    Origin = Vector2.Center,
                     XScale = 0.5f,
-                    YScale = 0.5f,
-                    Origin = Vector2.Center
+                    YScale = 0.5f
                 })
                 .AddComponent(new Sprite(Textures.BIRD))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new RectangleCollider())
-                .AddComponent(new BirdBehavior())
-                .AddComponent(new ScrollBehavior());
+                .AddComponent(new BirdBehavior());
         }
     }
 }

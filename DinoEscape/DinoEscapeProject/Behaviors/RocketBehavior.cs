@@ -45,12 +45,6 @@ namespace DinoEscapeProject.Behaviors
             float X                     = transform2D.X;
             KeyboardState keyState      = WaveServices.Input.KeyboardState;
 
-            Labels.Add("Rotation", transform2D.Rotation.ToString());
-            Labels.Add("Offset", offset.ToString());
-            Labels.Add("X", X.ToString());
-            Labels.Add("calculatedSpeed", calculatedSpeed.ToString());
-            Labels.Add("calculatedRotation", calculatedRotation.ToString());
-
             if (keyState.IsConnected)
             {
                 if ((keyState.Left == ButtonState.Pressed || keyState.A == ButtonState.Pressed)
@@ -60,7 +54,7 @@ namespace DinoEscapeProject.Behaviors
                         transform2D.Rotation -= calculatedRotation;
                 }
                 else if ((keyState.Right == ButtonState.Pressed || keyState.D == ButtonState.Pressed)
-                    && X < WaveServices.ViewportManager.VirtualWidth - offset
+                    && X < WaveServices.ViewportManager.RightEdge - offset
                     && transform2D.Rotation < rotationLimit)
                 {
                         transform2D.Rotation += calculatedRotation;
@@ -77,8 +71,8 @@ namespace DinoEscapeProject.Behaviors
                 //Evitamos que sobresalga por los bordes
                 if (X < offset)
                     X = offset;
-                else if (X > WaveServices.ViewportManager.VirtualWidth - offset)
-                    X = WaveServices.ViewportManager.VirtualWidth - offset;
+                else if (X > WaveServices.ViewportManager.RightEdge - offset)
+                    X = WaveServices.ViewportManager.RightEdge - offset;
 
                 transform2D.X = X;
             }

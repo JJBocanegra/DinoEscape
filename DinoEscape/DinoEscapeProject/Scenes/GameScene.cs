@@ -21,8 +21,7 @@ namespace DinoEscapeProject
             RenderManager.BackgroundColor = Color.FloralWhite;
 
             EntityManager.Add(EntitiesFactory.CreateRocket());
-            //EntityManager.Add(EntitiesFactory.CreateEnemiesEmitter());
-            EntityManager.Add(EntitiesFactory.CreateDrone().entity);
+            EntityManager.Add(EntitiesFactory.CreateEnemiesEmitter());
 
             this.AddSceneBehavior(new GameSceneBehavior(), SceneBehavior.Order.PreUpdate);
 

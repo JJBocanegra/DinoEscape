@@ -27,7 +27,7 @@ namespace DinoEscapeProject.Behaviors
 
             speed       = 100;
             offset      = (transform2D.Rectangle.Width / 2) * transform2D.XScale;
-            position    = new float[] { -offset, (int)WaveServices.ViewportManager.VirtualWidth + offset };
+            position    = new float[] { -offset, (int)WaveServices.ViewportManager.RightEdge + offset };
 
             transform2D.X = this.position[WaveServices.Random.Next(0, 2)];
 
@@ -51,7 +51,7 @@ namespace DinoEscapeProject.Behaviors
             float X         = transform2D.X;
 
             if (X < -offset
-            || X > WaveServices.ViewportManager.VirtualWidth + offset)
+            || X > WaveServices.ViewportManager.RightEdge + offset)
                 this.EntityManager.Remove(this.Owner);
 
             if (direction == "Right")

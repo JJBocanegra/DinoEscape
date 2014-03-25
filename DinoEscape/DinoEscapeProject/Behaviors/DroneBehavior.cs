@@ -46,7 +46,7 @@ namespace DinoEscapeProject.Behaviors
         {
             if (direction == "Right")
             {
-                if (transform2D.X > WaveServices.ViewportManager.VirtualWidth - offset)
+                if (transform2D.X > WaveServices.ViewportManager.RightEdge - offset)
                     direction = "Left";
                 else
                     transform2D.X += speed * (float)gameTime.TotalSeconds;

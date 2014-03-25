@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DinoEscapeProject.Behaviors;
 using WaveEngine.Framework;
+using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Services;
 
 namespace DinoEscapeProject.Entities
 {
@@ -13,6 +11,16 @@ namespace DinoEscapeProject.Entities
 
         public Enemy()
         {
+            var scrollBehavior = new ScrollBehavior();
+            this.entity = new Entity()
+                .AddComponent(scrollBehavior);
+
+            scrollBehavior.EntityOutOfScreen += (entity) =>
+            {
+                entity.Enabled = false;
+                entity.FindComponent<Transform2D>().Y = 0;
+                entity.FindComponent<Transform2D>().X = WaveServices.Random.Next((int)WaveServices.ViewportManager.LeftEdge, (int)WaveServices.ViewportManager.RightEdge);
+            };
 
         }
     }

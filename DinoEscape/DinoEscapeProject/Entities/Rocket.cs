@@ -13,14 +13,16 @@ namespace DinoEscapeProject.Entities
 {
     public class Rocket : BaseDecorator
     {
-        public static int speed;
-
-        /// <summary>
-        /// Initialize a new instance of the Rocket class
-        /// </summary>
+        #region Properties
+        public static int Speed
+        {
+            get;
+            set;
+        }
+        #endregion
         public Rocket()
         {
-            speed = 100;
+            Speed = 500;
 
             this.entity = new Entity()
                 .AddComponent(new Transform2D(){

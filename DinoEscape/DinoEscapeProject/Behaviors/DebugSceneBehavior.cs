@@ -8,14 +8,17 @@
 #endregion
 
 #region Using Statements
+using DinoEscapeProject.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Input;
+using WaveEngine.Components.UI;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
+using WaveEngine.Framework.UI;
 #endregion
 
 namespace FlyingKiteProject.Behaviors
@@ -25,6 +28,8 @@ namespace FlyingKiteProject.Behaviors
         private Input inputService;
         private KeyboardState beforeKeyboardState;
         private bool diagnostics;
+
+        private Slider sliderRocketSpeed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DebugSceneBehavior" /> class.
@@ -64,13 +69,33 @@ namespace FlyingKiteProject.Behaviors
                     this.Scene.RenderManager.DebugLines = this.diagnostics;
 
                     if (diagnostics)
+                    {
                         this.Scene.RenderManager.BackgroundColor = Color.Black;
+                        sliderRocketSpeed = new Slider()
+                        {
+                            Width = 360,
+                            Value = Rocket.Speed,
+                            Maximum = 500,
+                            Minimum = 100
+                        };
+
+                        Scene.EntityManager.Add(sliderRocketSpeed.Entity);
+                        sliderRocketSpeed.ValueChanged += changeRocketSpeed;
+                    }
                     else
+                    {
                         this.Scene.RenderManager.BackgroundColor = Color.FloralWhite;
+                        Scene.EntityManager.Remove(sliderRocketSpeed.Entity);
+                    }
                 }
             }
 
             beforeKeyboardState = inputService.KeyboardState;
+        }
+
+        private void changeRocketSpeed(object sender, ChangedEventArgs e)
+        {
+            Rocket.Speed = sliderRocketSpeed.Value;
         }
     }
 }

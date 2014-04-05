@@ -18,8 +18,6 @@ namespace DinoEscapeProject.Entities
             scrollBehavior.EntityOutOfScreen += (entity) =>
             {
                 entity.Enabled = false;
-                entity.FindComponent<Transform2D>().Y = 0;
-                entity.FindComponent<Transform2D>().X = WaveServices.Random.Next((int)WaveServices.ViewportManager.LeftEdge, (int)WaveServices.ViewportManager.RightEdge);
             };
 
         }

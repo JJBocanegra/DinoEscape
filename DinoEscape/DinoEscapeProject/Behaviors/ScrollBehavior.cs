@@ -1,5 +1,6 @@
 ﻿using DinoEscapeProject.Entities;
 using System;
+using WaveEngine.Common.Math;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
@@ -20,7 +21,7 @@ namespace DinoEscapeProject.Behaviors
         {
             base.Initialize();
 
-            speed = Rocket.speed;
+            speed = Rocket.Speed;
             offsetWidth = (transform2D.Rectangle.Width / 2) * transform2D.XScale;
             offsetHeight = (transform2D.Rectangle.Height / 2) * transform2D.YScale;
         }
@@ -28,9 +29,6 @@ namespace DinoEscapeProject.Behaviors
         protected override void Update(TimeSpan gameTime)
         {
             transform2D.Y += speed * (float)gameTime.TotalSeconds;
-
-            if (transform2D.X < WaveServices.ViewportManager.LeftEdge)
-                Console.WriteLine("Desaparece en: " + transform2D.X.ToString());
 
             if (transform2D.Y > WaveServices.ViewportManager.BottomEdge + offsetHeight
             || transform2D.X > WaveServices.ViewportManager.RightEdge + offsetWidth
@@ -47,7 +45,9 @@ namespace DinoEscapeProject.Behaviors
         public void EntityEnabled()
         {
             transform2D.Y = - offsetHeight;
-            transform2D.X = WaveServices.Random.Next((int)WaveServices.ViewportManager.LeftEdge, (int)WaveServices.ViewportManager.RightEdge);
+            transform2D.X = WaveServices.Random.Next(
+                (int)(WaveServices.ViewportManager.LeftEdge - offsetWidth), 
+                (int)(WaveServices.ViewportManager.RightEdge + offsetWidth));
         }
     }
 }

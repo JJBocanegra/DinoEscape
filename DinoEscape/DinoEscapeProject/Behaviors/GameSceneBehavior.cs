@@ -18,7 +18,7 @@ namespace DinoEscapeProject.Behaviors
         public GameSceneBehavior()
         {
             meterCounter = 0;
-            maxMeterCounter = 20;
+            maxMeterCounter = 2000 / Rocket.Speed;
             height = 0;
         }
 

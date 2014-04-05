@@ -22,7 +22,7 @@ namespace DinoEscapeProject.Entities
             this.entity = new Entity();
 
             //position = WaveServices.Random.Next(0, (int)WaveServices.ViewportManager.VirtualWidth);
-            enemies = new Entity[1];
+            enemies = new Entity[7];
 
             for (int i = 0; i < enemies.Length; i++)
             {

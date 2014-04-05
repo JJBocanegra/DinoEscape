@@ -6,6 +6,7 @@ using System.Diagnostics;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Math;
 using WaveEngine.Components.Cameras;
+using WaveEngine.Components.UI;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Diagnostic;
 using WaveEngine.Framework.Graphics;
@@ -20,13 +21,15 @@ namespace DinoEscapeProject
         {
             RenderManager.BackgroundColor = Color.FloralWhite;
 
+            //Hacemos que el motor siga dibujando los objetos aunque estén fuera de la pantalla (QUITAR)
+            this.RenderManager.Culling2DEnabled = false;
+
             EntityManager.Add(EntitiesFactory.CreateRocket());
             EntityManager.Add(EntitiesFactory.CreateEnemiesEmitter());
 
             this.AddSceneBehavior(new GameSceneBehavior(), SceneBehavior.Order.PreUpdate);
 
 #if DEBUG
-            //Labels.Add("Prueba", "valor");
             this.AddSceneBehavior(new DebugSceneBehavior(), SceneBehavior.Order.PreUpdate);
 #endif
         }

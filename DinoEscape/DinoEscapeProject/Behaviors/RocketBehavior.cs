@@ -1,4 +1,5 @@
 ﻿#region Using Statements
+using DinoEscapeProject.Entities;
 using System;
 using WaveEngine.Common.Input;
 using WaveEngine.Framework;
@@ -24,9 +25,8 @@ namespace DinoEscapeProject.Behaviors
         {
             base.Initialize();
 
-            speed   = 500;
             maneuverability = 1;
-            rotationLimit = 0.5f;
+            rotationLimit   = 1f;
 
             offset  = (transform2D.Rectangle.Width / 2) * transform2D.XScale;
 
@@ -35,6 +35,7 @@ namespace DinoEscapeProject.Behaviors
 
         protected override void Update(TimeSpan gameTime)
         {
+            speed = Rocket.Speed;
             Move(gameTime);
         }
 
